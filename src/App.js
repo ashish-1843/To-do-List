@@ -13,7 +13,7 @@ function App() {
   const [editId, setEditId] = useState(null);
 
   const fetchTodo = async(selectedDate) =>{
-    const res = await axios.get(`https://to-do-list-backend-y4zg.onrender.com/${selectedDate}`);
+    const res = await axios.get(`https://to-do-list-backend-y4zg.onrender.com/api/todos/${selectedDate}`);
     setTodos(res.data);
   }
 
@@ -21,13 +21,13 @@ function App() {
     if(!title || !date)return alert("Fill the field");
 
     if(editId){
-      await axios.put(`https://to-do-list-backend-y4zg.onrender.com/${editId}`, title);
+      await axios.put(`https://to-do-list-backend-y4zg.onrender.com/api/todos/${editId}`, title);
       setEditId(null);
       toast.success('Task Updated Successfully');
     }
 
     else{
-      await axios.post(`https://to-do-list-backend-y4zg.onrender.com`, {title, date});
+      await axios.post(`https://to-do-list-backend-y4zg.onrender.com/api/todos`, {title, date});
       toast.success('Task Saved Successfully');
     }
 
@@ -44,7 +44,7 @@ function App() {
         }).then((result) => {
 
             if (result.isConfirmed) {
-                axios.delete(`https://to-do-list-backend-y4zg.onrender.com/${id}`)
+                axios.delete(`https://to-do-list-backend-y4zg.onrender.com/api/todos/${id}`)
                     .then((res) => {
                         toast.success("Task Deleted!")
                         fetchTodo(date);
@@ -59,7 +59,7 @@ function App() {
   }
 
    const toggleStatus = async (todo) => {
-    await axios.put(`https://to-do-list-backend-y4zg.onrender.com/${todo._id}`, {
+    await axios.put(`https://to-do-list-backend-y4zg.onrender.com/api/todos/${todo._id}`, {
       completed: !todo.completed
     });
     fetchTodo(date);
