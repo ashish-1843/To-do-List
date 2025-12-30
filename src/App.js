@@ -81,8 +81,8 @@ function App() {
     <div className="todo">
       <ToastContainer/>
       <h2>Select Date & Add your task</h2>
-
-      <input type="date" className='date' value={date} onChange={(e) => setDate(e.target.value)}/>
+      <label for='date'>Select date</label>
+      <input type="date" id='date' className='date' placeholder='Select Date' value={date} onChange={(e) => setDate(e.target.value)}/>
       <br /><br />
 
       <input type="text" className='text' placeholder="Task name" value={title} onChange={(e) => setTitle(e.target.value)}/>

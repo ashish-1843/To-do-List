@@ -42,6 +42,7 @@ h2{
   font-size : 14px;
   font-weight : 600;
   background-color: transparent;
+  letter-spacing: 2px;
 }
 
 .addtask{
@@ -87,4 +88,11 @@ button{
 button:hover{
   background-color : #213448;
   color : white;
+}
+
+label{
+  font-weight : 660;
+  font-size : 20px;
+  margin-right : 10px;
+  color : #213448;
 }
